@@ -7,7 +7,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      dropShadow: {
+        productCardText: "",
+      },
+    },
     colors: {
       cyan: colors.cyan,
       pink: colors.pink,
