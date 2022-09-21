@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,9 +7,16 @@
 @layer base {
     * {
         direction: rtl !important;
+        @apply font-rubik;
     }
 
     body {
         @apply bg-slate-100;
+    }
+}
+
+@layer components {
+    .font-header {
+        @apply font-bold text-xl;
     }
 }

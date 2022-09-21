@@ -10,8 +10,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="w-60 h-40">
-        <ProductCard variant="pink">
-          שלום שלום
+        <ProductCard variant="pink" title="מוצר מגניב">
+          שלום שלום 
         </ProductCard>
       </main>
     </div>
