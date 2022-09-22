@@ -21,7 +21,7 @@ export default function ProductCard({ className, variant = 'cyan', title, descri
             <div className="p-3 flex flex-col">
                 <h3 className="font-header">{title}</h3>
                 <div className="text-slate-600">{description}</div>
-                <Link href={readMorePath} ><a className="text-cyan-600 self-end">{strings.READ_MORE}</a></Link>
+                <Link href={readMorePath} ><a className="text-cyan-600 self-end select-none">{strings.READ_MORE}</a></Link>
             </div>
         </Card>
     )
