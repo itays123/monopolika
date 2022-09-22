@@ -5,7 +5,7 @@ import Link from "next/link";
 import strings from "../../strings";
 
 export interface ProductCardProps extends ClassName {
-    variant?: 'cyan' | 'pink';
+    variant?: 'cyan' | 'pink' | 'orange' | 'emerald';
     title: string;
     description: string;
     readMorePath?: string;
@@ -16,7 +16,9 @@ export default function ProductCard({ className, variant = 'cyan', title, descri
         <Card className={clsx("px-0 py-0 flex flex-col",className)}>
             <div className={clsx("min-h-[96px] flex-grow", {
                 "bg-gradient-to-br from-cyan-300 to-cyan-600": variant === 'cyan',
-                "bg-gradient-to-br from-pink-400 to-pink-600": variant === 'pink',
+                "bg-gradient-to-br from-pink-300 to-pink-600": variant === 'pink',
+                "bg-gradient-to-br from-orange-300 to-orange-600": variant === 'orange',
+                "bg-gradient-to-br from-emerald-300 to-emerald-600": variant === 'emerald',
             })}></div>
             <div className="p-3 flex flex-col">
                 <h3 className="font-header">{title}</h3>

@@ -10,8 +10,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="w-60 h-40">
-        <ProductCard variant="pink" title="מוצר מגניב" description="שלום שלום" />
-        <ProductCard variant="cyan" title="מוצר נהדר" description="שלום לכם" />
+        <ProductCard variant="cyan" title="מוצר מגניב" description="שלום שלום" />
+        <ProductCard variant="pink" title="מוצר נהדר" description="שלום לכם" />
+        <ProductCard variant="orange" title="מוצר נהדר" description="שלום לכם" />
+        <ProductCard variant="emerald" title="מוצר נהדר" description="שלום לכם" />
       </main>
     </div>
   );
