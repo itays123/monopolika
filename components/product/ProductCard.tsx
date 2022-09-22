@@ -1,13 +1,17 @@
 import clsx from "clsx";
 import Card from "../base/Card";
-import { ClassName, Container } from "../types";
+import { ClassName } from "../types";
+import Link from "next/link";
+import strings from "../../strings";
 
-export interface ProductCardProps extends ClassName, Container {
+export interface ProductCardProps extends ClassName {
     variant?: 'cyan' | 'pink';
     title: string;
+    description: string;
+    readMorePath?: string;
 }
 
-export default function ProductCard({ className, children, variant = 'cyan', title }: ProductCardProps) {
+export default function ProductCard({ className, variant = 'cyan', title, description, readMorePath = "/" }: ProductCardProps) {
     return (
         <Card className={clsx("px-0 py-0 flex flex-col",className)}>
             <div className={clsx("min-h-[96px] flex-grow", {
@@ -16,7 +20,8 @@ export default function ProductCard({ className, children, variant = 'cyan', tit
             })}></div>
             <div className="p-3 flex flex-col">
                 <h3 className="font-header">{title}</h3>
-                <div>{children}</div>
+                <div className="text-slate-600">{description}</div>
+                <Link href={readMorePath} ><a className="text-cyan-600 self-end">{strings.READ_MORE}</a></Link>
             </div>
         </Card>
     )
