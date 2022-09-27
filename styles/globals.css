@@ -19,4 +19,16 @@
     .font-header {
         @apply font-bold text-xl;
     }
+    .gradient-cyan {
+        @apply  from-cyan-300 to-cyan-600;
+    }
+    .gradient-pink {
+        @apply  from-pink-300 to-pink-600;
+    }
+    .gradient-orange {
+        @apply  from-orange-300 to-orange-600;
+    }
+    .gradient-emerald {
+        @apply  from-emerald-300 to-emerald-600;
+    }
 }

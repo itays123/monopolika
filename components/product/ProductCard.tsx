@@ -14,11 +14,11 @@ export interface ProductCardProps extends ClassName {
 export default function ProductCard({ className, variant = 'cyan', title, description, readMorePath = "/" }: ProductCardProps) {
     return (
         <Card className={clsx("px-0 py-0 flex flex-col",className)}>
-            <div className={clsx("min-h-[96px] flex-grow", {
-                "bg-gradient-to-br from-cyan-300 to-cyan-600": variant === 'cyan',
-                "bg-gradient-to-br from-pink-300 to-pink-600": variant === 'pink',
-                "bg-gradient-to-br from-orange-300 to-orange-600": variant === 'orange',
-                "bg-gradient-to-br from-emerald-300 to-emerald-600": variant === 'emerald',
+            <div className={clsx("min-h-[96px] flex-grow bg-gradient-to-br", {
+                "gradient-cyan": variant === 'cyan',
+                "gradient-pink": variant === 'pink',
+                "gradient-orange": variant === 'orange',
+                "gradient-emerald": variant === 'emerald',
             })}></div>
             <div className="p-3 flex flex-col">
                 <h3 className="font-header">{title}</h3>
