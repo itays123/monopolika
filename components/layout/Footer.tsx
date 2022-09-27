@@ -1,4 +1,5 @@
 import strings, { links } from "../../strings";
+import ExternalLink from "../base/ExternalLink";
 import ContactMe from "../media/ContactMe";
 
 export default function Footer() {
@@ -8,14 +9,9 @@ export default function Footer() {
         <ContactMe label={strings.CONTACT_ME} className="text-slate-900" />
         <div>
           {strings.CREATED_BY}
-          <a
-            href={links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline"
-          >
+          <ExternalLink href={links.github} className="underline">
             {strings.ITAY}
-          </a>
+          </ExternalLink>
         </div>
       </div>
     </div>
