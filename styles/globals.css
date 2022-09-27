@@ -23,6 +23,12 @@
     .font-header {
         @apply font-bold text-xl;
     }
+    .container {
+        @apply mx-auto px-8
+    }
+}
+
+@layer utilities {
     .gradient-cyan {
         @apply  from-cyan-300 to-cyan-600;
     }
