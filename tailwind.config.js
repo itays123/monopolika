@@ -22,6 +22,8 @@ module.exports = {
       slate: colors.slate,
       orange: colors.orange,
       emerald: colors.emerald,
+      inherit: colors.inherit,
+      current: colors.current,
     },
   },
   plugins: [],
