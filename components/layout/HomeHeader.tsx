@@ -1,6 +1,8 @@
+import Image from "next/image";
 import strings from "../../strings";
 import MultiLineText from "../base/MultiLineText";
 import ContactMe from "../media/ContactMe";
+import me from "../../assets/me.png";
 
 export default function HomeHeader() {
   return (
@@ -18,7 +20,9 @@ export default function HomeHeader() {
             className="mt-4"
           />
         </div>
-        <div className="w-[512px] h-[512px] bg-slate-400 flex-none"></div>
+        <div className="flex-none max-w-[40%] flex items-end">
+          <Image src={me} alt="" />
+        </div>
       </div>
     </header>
   );
