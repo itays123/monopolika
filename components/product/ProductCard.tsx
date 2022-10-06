@@ -3,6 +3,7 @@ import Card from "../base/Card";
 import { ClassName } from "../types";
 import Link from "next/link";
 import strings from "../../strings";
+import Product from "../../interfaces/Product";
 
 export const PRODUCT_CARD_VARIANTS = [
   "cyan",
@@ -11,10 +12,10 @@ export const PRODUCT_CARD_VARIANTS = [
   "emerald",
 ] as const;
 
-export interface ProductCardProps extends ClassName {
+export interface ProductCardProps
+  extends ClassName,
+    Pick<Product, "title" | "description"> {
   variant?: typeof PRODUCT_CARD_VARIANTS[number];
-  title: string;
-  description: string;
   readMorePath?: string;
 }
 

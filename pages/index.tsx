@@ -10,22 +10,22 @@ const dummy_data: ProductListProps["products"] = [
   {
     title: "מוצר 1",
     description: strings.ABOUT_ME,
-    readMorePath: "1",
+    readMorePath: "/product/1",
   },
   {
     title: "מוצר 2",
     description: strings.ABOUT_ME,
-    readMorePath: "2",
+    readMorePath: "/product/1",
   },
   {
     title: "מוצר 3",
     description: strings.ABOUT_ME,
-    readMorePath: "3",
+    readMorePath: "/product/1",
   },
   {
     title: "מוצר 4",
     description: strings.ABOUT_ME,
-    readMorePath: "4",
+    readMorePath: "/product/1",
   },
 ];
 
