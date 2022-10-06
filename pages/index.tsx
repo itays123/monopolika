@@ -1,8 +1,33 @@
 import Head from "next/head";
 import Footer from "../components/layout/Footer";
 import HomeHeader from "../components/layout/HomeHeader";
-import ContactMe from "../components/media/ContactMe";
-import ProductCard from "../components/product/ProductCard";
+import ProductList, {
+  ProductListProps,
+} from "../components/product/ProductList";
+import strings from "../strings";
+
+const dummy_data: ProductListProps["products"] = [
+  {
+    title: "מוצר 1",
+    description: strings.ABOUT_ME,
+    readMorePath: "1",
+  },
+  {
+    title: "מוצר 2",
+    description: strings.ABOUT_ME,
+    readMorePath: "2",
+  },
+  {
+    title: "מוצר 3",
+    description: strings.ABOUT_ME,
+    readMorePath: "3",
+  },
+  {
+    title: "מוצר 4",
+    description: strings.ABOUT_ME,
+    readMorePath: "4",
+  },
+];
 
 export default function Home() {
   return (
@@ -13,7 +38,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeHeader />
-      <main></main>
+      <main className="container py-6 space-y-4">
+        <h2 className="font-bold text-2xl">{strings.MY_PRODUCTS}</h2>
+        <ProductList
+          className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 max-w-[80%] mx-auto"
+          products={dummy_data}
+        />
+      </main>
       <Footer />
     </div>
   );
