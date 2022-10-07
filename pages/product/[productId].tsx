@@ -60,7 +60,7 @@ export default function ProductPage({ product }: ProductPageProps) {
         <ProductDetails {...product} />
       </header>
       <LineBreak className="max-w-[calc(100%-32rem)] mx-auto" />
-      <main>
+      <main className="space-y-8 pb-6">
         <Section title={strings.GAME_BOARD}>
           <div className="relative w-[512px] h-[512px] mx-auto">
             <Image
@@ -71,6 +71,7 @@ export default function ProductPage({ product }: ProductPageProps) {
             />
           </div>
         </Section>
+        <Section title={strings.CARD_EXAMPLES}>מיי ניים איז שובי דובי</Section>
       </main>
       <Footer />
     </div>
