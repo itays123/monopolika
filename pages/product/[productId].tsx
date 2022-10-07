@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import { useMemo } from "react";
 import LineBreak from "../../components/base/LineBreak";
 import Footer from "../../components/layout/Footer";
@@ -60,7 +61,16 @@ export default function ProductPage({ product }: ProductPageProps) {
       </header>
       <LineBreak className="max-w-[calc(100%-32rem)] mx-auto" />
       <main>
-        <Section title={strings.GAME_BOARD}></Section>
+        <Section title={strings.GAME_BOARD}>
+          <div className="relative w-[512px] h-[512px] mx-auto">
+            <Image
+              src={product.boardImageUrl}
+              alt={strings.GAME_BOARD}
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+        </Section>
       </main>
       <Footer />
     </div>

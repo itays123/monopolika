@@ -44,7 +44,7 @@ export default function Home() {
       </Head>
       <HomeHeader />
       <main>
-        <Section className="py-6 space-y-4" title={strings.MY_PRODUCTS}>
+        <Section className="py-6" title={strings.MY_PRODUCTS}>
           <ProductList
             className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 max-w-[80%] mx-auto"
             products={dummy_data}
