@@ -54,10 +54,11 @@ export default function ProductPage({ product }: ProductPageProps) {
       <nav>
         <BreadCrumb className="px-8 py-4" paths={links} />
       </nav>
-      <header className="mb-8 container">
+      <header className="my-8 container">
         <ProductDetails {...product} />
-        <LineBreak className="max-w-[calc(100%-32rem)] mx-auto mt-12" />
       </header>
+      <LineBreak className="max-w-[calc(100%-32rem)] mx-auto" />
+      <main className="container my-12"></main>
       <Footer />
     </div>
   );
