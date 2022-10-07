@@ -21,7 +21,7 @@ export default function HomeHeader() {
           />
         </div>
         <div className="flex-none max-w-[40%] flex items-end">
-          <Image src={me} alt="" />
+          <Image src={me} alt="" priority />
         </div>
       </div>
     </header>

@@ -1,3 +1,4 @@
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Footer from "../components/layout/Footer";
 import HomeHeader from "../components/layout/HomeHeader";
@@ -34,7 +35,21 @@ const dummy_data: ProductListProps["products"] = [
   },
 ];
 
-export default function Home() {
+export interface HomepageProps {
+  products: ProductListProps["products"];
+}
+
+export const getServerSideProps: GetServerSideProps<HomepageProps> = async (
+  _context
+) => {
+  return {
+    props: {
+      products: dummy_data,
+    },
+  };
+};
+
+export default function Home({ products }: HomepageProps) {
   return (
     <div className="flex flex-col items-stretch">
       <Head>
@@ -47,7 +62,7 @@ export default function Home() {
         <Section className="py-6" title={strings.MY_PRODUCTS}>
           <ProductList
             className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 max-w-[80%] mx-auto"
-            products={dummy_data}
+            products={products}
           />
         </Section>
       </main>
