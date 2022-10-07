@@ -1,17 +1,20 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useMemo } from "react";
+import LineBreak from "../../components/base/LineBreak";
+import Footer from "../../components/layout/Footer";
 import BreadCrumb, { ILink } from "../../components/navigation/BreadCrumb";
 import { productPage } from "../../components/navigation/linkBuilder";
+import ProductDetails from "../../components/product/ProductDetails";
 import Product from "../../interfaces/Product";
 import strings from "../../strings";
 
 const dummy_product: Product = {
   title: "מונופול לדוגמה",
   description: strings.ABOUT_ME,
-  coverImageUrl: "/me.png",
+  coverImageUrl: "https://picsum.photos/seed/picsum/300/300",
   id: "1",
-  boardImageUrl: "/me.png",
+  boardImageUrl: "https://picsum.photos/seed/picsum/512/512",
 };
 
 export interface ProductPageProps {
@@ -48,7 +51,14 @@ export default function ProductPage({ product }: ProductPageProps) {
         <meta name="description" content={product.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <BreadCrumb className="px-8 py-4" paths={links} />
+      <nav>
+        <BreadCrumb className="px-8 py-4" paths={links} />
+      </nav>
+      <header className="mb-8 container">
+        <ProductDetails {...product} />
+        <LineBreak className="max-w-[calc(100%-32rem)] mx-auto mt-12" />
+      </header>
+      <Footer />
     </div>
   );
 }
