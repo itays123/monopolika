@@ -10,22 +10,26 @@ const dummy_data: ProductListProps["products"] = [
   {
     title: "מוצר 1",
     description: strings.ABOUT_ME,
-    readMorePath: "/product/1",
+    id: "1",
+    coverImageUrl: "https://picsum.photos/seed/picsum/300/300",
   },
   {
     title: "מוצר 2",
     description: strings.ABOUT_ME,
-    readMorePath: "/product/1",
+    id: "1",
+    coverImageUrl: "https://picsum.photos/seed/picsum/300/300",
   },
   {
     title: "מוצר 3",
     description: strings.ABOUT_ME,
-    readMorePath: "/product/1",
+    id: "1",
+    coverImageUrl: "https://picsum.photos/seed/picsum/300/300",
   },
   {
     title: "מוצר 4",
     description: strings.ABOUT_ME,
-    readMorePath: "/product/1",
+    id: "1",
+    coverImageUrl: "https://picsum.photos/seed/picsum/300/300",
   },
 ];
 
