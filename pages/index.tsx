@@ -39,7 +39,9 @@ export default function Home() {
       </Head>
       <HomeHeader />
       <main className="container py-6 space-y-4">
-        <h2 className="font-bold text-2xl">{strings.MY_PRODUCTS}</h2>
+        <h2 className="font-bold text-2xl text-center">
+          {strings.MY_PRODUCTS}
+        </h2>
         <ProductList
           className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 max-w-[80%] mx-auto"
           products={dummy_data}
