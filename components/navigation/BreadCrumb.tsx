@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { ClassName } from "../types";
+import styles from "./breadcrumb.module.css";
 
 export interface ILink {
   label: string;
@@ -13,10 +14,17 @@ export interface BreadCrumbProps extends ClassName {
 
 export default function BreadCrumb({ className, paths }: BreadCrumbProps) {
   return (
-    <div className={clsx("flex gap-2", className)}>
+    <div className={clsx("flex", className)}>
       {paths.map(({ label, href }) => (
         <Link href={href} key={href}>
-          <span className="text-2xl">{label}</span>
+          <span
+            className={clsx(
+              "text-2xl cursor-pointer last:font-semibold",
+              styles.breadcrumb
+            )}
+          >
+            {label}
+          </span>
         </Link>
       ))}
     </div>

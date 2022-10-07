@@ -48,7 +48,7 @@ export default function ProductPage({ product }: ProductPageProps) {
         <meta name="description" content={product.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <BreadCrumb paths={links} />
+      <BreadCrumb className="px-8 py-4" paths={links} />
     </div>
   );
 }

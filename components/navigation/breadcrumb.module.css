@@ -1,0 +1,4 @@
+.breadcrumb:not(:last-child)::after {
+    content: ">";
+    @apply px-3;
+}
