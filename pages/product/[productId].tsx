@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useMemo } from "react";
 import LineBreak from "../../components/base/LineBreak";
 import Footer from "../../components/layout/Footer";
+import Section from "../../components/layout/Section";
 import BreadCrumb, { ILink } from "../../components/navigation/BreadCrumb";
 import { productPage } from "../../components/navigation/linkBuilder";
 import ProductDetails from "../../components/product/ProductDetails";
@@ -58,7 +59,9 @@ export default function ProductPage({ product }: ProductPageProps) {
         <ProductDetails {...product} />
       </header>
       <LineBreak className="max-w-[calc(100%-32rem)] mx-auto" />
-      <main className="container my-12"></main>
+      <main>
+        <Section title={strings.GAME_BOARD}></Section>
+      </main>
       <Footer />
     </div>
   );

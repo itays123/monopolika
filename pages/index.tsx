@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Footer from "../components/layout/Footer";
 import HomeHeader from "../components/layout/HomeHeader";
+import Section from "../components/layout/Section";
 import ProductList, {
   ProductListProps,
 } from "../components/product/ProductList";
@@ -42,14 +43,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeHeader />
-      <main className="container py-6 space-y-4">
-        <h2 className="font-bold text-2xl text-center">
-          {strings.MY_PRODUCTS}
-        </h2>
-        <ProductList
-          className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 max-w-[80%] mx-auto"
-          products={dummy_data}
-        />
+      <main>
+        <Section className="py-6 space-y-4" title={strings.MY_PRODUCTS}>
+          <ProductList
+            className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 max-w-[80%] mx-auto"
+            products={dummy_data}
+          />
+        </Section>
       </main>
       <Footer />
     </div>

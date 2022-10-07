@@ -24,9 +24,9 @@ export default function ProductDetails({
       </div>
       <div className="flex flex-col gap-2 flex-grow">
         <h1 className="font-bold text-7xl">{title}</h1>
-        <h2 className="text-xl">
+        <p className="text-xl">
           <MultiLineText text={description} />
-        </h2>
+        </p>
         <Button className="self-end">{strings.ORDER_ONE}</Button>
       </div>
     </div>

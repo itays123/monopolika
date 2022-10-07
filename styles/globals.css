@@ -26,6 +26,9 @@
     .container {
         @apply mx-auto px-8
     }
+    .section-title {
+        @apply text-center font-bold text-3xl;
+    }
 }
 
 @layer utilities {
