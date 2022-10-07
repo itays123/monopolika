@@ -17,6 +17,8 @@ const dummy_product: Product = {
   coverImageUrl: "https://picsum.photos/seed/picsum/300/300",
   id: "1",
   boardImageUrl: "https://picsum.photos/seed/picsum/512/512",
+  basePrice: 120,
+  additionsPrice: 15,
 };
 
 export interface ProductPageProps {

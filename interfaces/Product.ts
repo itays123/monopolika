@@ -4,4 +4,6 @@ export default interface Product {
     description: string;
     coverImageUrl: string;
     boardImageUrl: string;
+    basePrice: number;
+    additionsPrice: number;
 }

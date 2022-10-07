@@ -5,9 +5,13 @@ import strings from "../../strings";
 import Button from "../base/Button";
 import MultiLineText from "../base/MultiLineText";
 import { ClassName } from "../types";
+import ProductPrice from "./ProductPrice";
 
 export interface IProductDetails
-  extends Pick<Product, "title" | "description" | "coverImageUrl"> {}
+  extends Pick<
+    Product,
+    "title" | "description" | "coverImageUrl" | "basePrice" | "additionsPrice"
+  > {}
 
 export interface ProductDetailsProps extends ClassName, IProductDetails {}
 
@@ -15,6 +19,8 @@ export default function ProductDetails({
   title,
   description,
   coverImageUrl,
+  basePrice,
+  additionsPrice,
   className,
 }: ProductDetailsProps) {
   return (
@@ -26,6 +32,7 @@ export default function ProductDetails({
         <h1 className="font-bold text-7xl">{title}</h1>
         <p className="text-xl">
           <MultiLineText text={description} />
+          <ProductPrice basePrice={basePrice} additionsPrice={additionsPrice} />
         </p>
         <Button className="self-end">{strings.ORDER_ONE}</Button>
       </div>
