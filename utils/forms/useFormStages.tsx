@@ -46,7 +46,7 @@ export default function useFormStages<FormResult>(
 
   return useMemo(() => {
     return [
-      stages.current[currentStageIdx].renderForm(data.current),
+      stages.current[currentStageIdx].renderForm(data.current, currentStageIdx),
       stages.current
         .filter((_, idx) => idx < currentStageIdx)
         .map((stage, idx) => (

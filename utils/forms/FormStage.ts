@@ -22,11 +22,11 @@ abstract class FormStage<Fields extends {}, Display> {
      * The form to render when state is mutating.
      * Ensure calling the complete handler when completed
      */
-    protected abstract renderFormFromState(state: Fields): Display;
+    protected abstract renderFormFromState(state: Fields, stageIdx: number): Display;
 
-    renderForm(values: Fields): Display {
+    renderForm(values: Fields, stageIdx: number): Display {
         const currentState = { ...this.initialState, ...values };
-        return this.renderFormFromState(currentState);
+        return this.renderFormFromState(currentState, stageIdx);
     }
 
     /**

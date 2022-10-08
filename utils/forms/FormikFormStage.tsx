@@ -8,10 +8,10 @@ abstract class FormikFormStage<Fields extends {}> extends FormStage<
 > {
   protected abstract renderFormik(props: FormikProps<Fields>): JSX.Element;
 
-  protected renderFormFromState(state: Fields): ReactNode {
+  protected renderFormFromState(state: Fields, stageIdx: number): ReactNode {
     return (
       <Formik
-        key={JSON.stringify(state)} // phew! that was hard to debug
+        key={stageIdx} // phew! that was hard to debug
         component={this.renderFormik}
         initialValues={state}
         validate={this.validate}
