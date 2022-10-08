@@ -1,6 +1,8 @@
 import { Formik, FormikProps } from "formik";
 import { ReactNode } from "react";
-import FormStage from "./FormStage";
+import FormStage, { NextStage } from "./FormStage";
+
+export type NextFormikStage<Fields> = NextStage<Fields, JSX.Element>;
 
 abstract class FormikFormStage<Fields extends {}> extends FormStage<
   Fields,

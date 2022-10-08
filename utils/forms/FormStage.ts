@@ -1,4 +1,5 @@
 export type CompleteHandler<Fields> = (values: Fields) => Promise<void>;
+export type NextStage<Fields, Display> = (values: Fields) => FormStage<unknown, Display> | undefined;
 
 abstract class FormStage<Fields extends {}, Display> {
 
@@ -6,7 +7,7 @@ abstract class FormStage<Fields extends {}, Display> {
 
     constructor(
         protected initialState: Fields,
-        public nextStage: (values: Fields) => FormStage<unknown, Display> | undefined = undefined
+        public nextStage: NextStage<Fields, Display> = undefined
     ) {}
 
     async onComplete(handler: CompleteHandler<Fields>) {
