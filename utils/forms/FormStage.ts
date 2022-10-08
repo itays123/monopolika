@@ -2,11 +2,11 @@ export type CompleteHandler<Fields> = (values: Fields) => Promise<void>;
 
 abstract class FormStage<Fields extends {}, Display> {
 
-    private completeHandler: CompleteHandler<Fields>
+    protected completeHandler: CompleteHandler<Fields>
 
     constructor(
         protected initialState: Fields,
-        public nextStage: <T>(values: Fields) => FormStage<T, Display>
+        public nextStage: (values: Fields) => FormStage<unknown, Display> | undefined = undefined
     ) {}
 
     async onComplete(handler: CompleteHandler<Fields>) {
@@ -22,7 +22,12 @@ abstract class FormStage<Fields extends {}, Display> {
      * The form to render when state is mutating.
      * Ensure calling the complete handler when completed
      */
-    abstract renderForm(): Display;
+    protected abstract renderFormFromState(state: Fields): Display;
+
+    renderForm(values: Fields): Display {
+        const currentState = { ...this.initialState, ...values };
+        return this.renderFormFromState(currentState);
+    }
 
     /**
      * The UI to render when stage is completed
