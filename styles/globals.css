@@ -29,6 +29,9 @@
     .section-title {
         @apply text-center font-bold text-3xl;
     }
+    input[type="checkbox"].checkbox {
+        @apply w-6 h-6 text-cyan-600 bg-slate-100 border-cyan-300 accent-cyan-600;
+    }
 }
 
 @layer utilities {
