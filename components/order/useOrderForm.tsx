@@ -1,5 +1,6 @@
 import Order from "../../interfaces/Order";
 import useFormStages from "../../utils/forms/useFormStages";
+import CustomizationStage from "./CustomizationStage";
 import ProductStage from "./ProductStage";
 
 const useOrder = () => {
@@ -16,5 +17,8 @@ const useOrder = () => {
 
 export default function useOrderForm() {
   const { doFetch } = useOrder();
-  return useFormStages([new ProductStage()], doFetch);
+  return useFormStages(
+    [new ProductStage(() => new CustomizationStage())],
+    doFetch
+  );
 }

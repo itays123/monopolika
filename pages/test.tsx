@@ -32,7 +32,7 @@ class Stage2 extends FormikFormStage<{ email: string }> {
   renderCompleted(
     state: { email: string },
     onStageClick: () => void
-  ): ReactNode {
+  ): JSX.Element {
     return <button onClick={onStageClick}>{state.email}</button>;
   }
 }
@@ -68,7 +68,7 @@ class Stage1 extends FormikFormStage<{ name: string }> {
   renderCompleted(
     state: { name: string },
     onStageClick: () => void
-  ): ReactNode {
+  ): JSX.Element {
     return <button onClick={onStageClick}>{state.name}</button>;
   }
 }

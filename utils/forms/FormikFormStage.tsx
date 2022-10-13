@@ -1,16 +1,15 @@
 import { Formik, FormikProps } from "formik";
-import { ReactNode } from "react";
 import FormStage, { NextStage } from "./FormStage";
 
 export type NextFormikStage<Fields> = NextStage<Fields, JSX.Element>;
 
 abstract class FormikFormStage<Fields extends {}> extends FormStage<
   Fields,
-  ReactNode
+  JSX.Element
 > {
   protected abstract renderFormik(props: FormikProps<Fields>): JSX.Element;
 
-  protected renderFormFromState(state: Fields, stageIdx: number): ReactNode {
+  protected renderFormFromState(state: Fields, stageIdx: number): JSX.Element {
     return (
       <Formik
         key={stageIdx} // phew! that was hard to debug
