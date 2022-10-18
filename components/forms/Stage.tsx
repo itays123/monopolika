@@ -1,6 +1,6 @@
 import { ComponentType, useMemo } from "react";
 import { Container } from "../types";
-import { IStageContext, useStages } from "./StageContext";
+import { useStages } from "./StageContext";
 
 export interface StageProps extends Container {
   key: Required<JSX.IntrinsicAttributes>["key"] & number;
