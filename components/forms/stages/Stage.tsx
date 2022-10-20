@@ -1,5 +1,5 @@
-import { ComponentType, useCallback, useMemo } from "react";
-import { Container } from "../types";
+import { ComponentType, Fragment, useCallback, useMemo } from "react";
+import { Container } from "../../types";
 import { useStages } from "./StageContext";
 
 export interface StageCompletedDisplayProps {
@@ -7,13 +7,13 @@ export interface StageCompletedDisplayProps {
 }
 
 export interface StageProps extends Container {
-  key: Required<JSX.IntrinsicAttributes>["key"] & number;
+  key?: Required<JSX.IntrinsicAttributes>["key"] & number;
   stageCompletedDisplay?: ComponentType<StageCompletedDisplayProps>;
 }
 
 export default function Stage({
   children,
-  key,
+  key = 0,
   stageCompletedDisplay: StageCompletedDisplay,
 }: StageProps) {
   const { currentStage, setCurrentStage } = useStages();
@@ -25,8 +25,12 @@ export default function Stage({
     () => setCurrentStage(currentStage),
     [currentStage, setCurrentStage]
   );
-  if (isCompleted && StageCompletedDisplay)
-    return <StageCompletedDisplay navigateToStage={navigateToStage} />;
-  if (isCurrentStage) return children;
-  else return null;
+  return (
+    <Fragment>
+      {isCompleted && StageCompletedDisplay && (
+        <StageCompletedDisplay navigateToStage={navigateToStage} />
+      )}
+      {isCurrentStage && children}
+    </Fragment>
+  );
 }

@@ -1,6 +1,6 @@
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
-import { useIteration } from "../../hooks/useIteration";
-import { Container } from "../types";
+import { useIteration } from "../../../hooks/useIteration";
+import { Container } from "../../types";
 
 export interface IStageContext
   extends Omit<
