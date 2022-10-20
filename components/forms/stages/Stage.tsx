@@ -7,19 +7,19 @@ export interface StageCompletedDisplayProps {
 }
 
 export interface StageProps extends Container {
-  key?: Required<JSX.IntrinsicAttributes>["key"] & number;
+  idx?: number;
   stageCompletedDisplay?: ComponentType<StageCompletedDisplayProps>;
 }
 
 export default function Stage({
   children,
-  key = 0,
+  idx,
   stageCompletedDisplay: StageCompletedDisplay,
 }: StageProps) {
   const { currentStage, setCurrentStage } = useStages();
   const [isCurrentStage, isCompleted] = useMemo(
-    () => [key === currentStage, key < currentStage],
-    [currentStage, key]
+    () => [idx === currentStage, idx < currentStage],
+    [currentStage, idx]
   );
   const navigateToStage = useCallback(
     () => setCurrentStage(currentStage),

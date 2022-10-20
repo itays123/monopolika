@@ -11,14 +11,15 @@ export interface StageElement {
 
 export interface StagesProps {
   stages: StageElement[];
-  initialStage: number;
+  initialStage?: number;
+  onLastStageComplete: () => {};
 }
 
-export default function Stages({ stages, initialStage }: StagesProps) {
+export default function Stages({ stages, initialStage = 0 }: StagesProps) {
   return (
     <StageContextProvider initialStage={initialStage} limit={stages.length}>
       {stages.map(({ currentStage: Current, completedStage }, idx) => (
-        <Stage key={idx} stageCompletedDisplay={completedStage}>
+        <Stage key={idx} idx={idx} stageCompletedDisplay={completedStage}>
           <Current />
         </Stage>
       ))}

@@ -1,96 +1,63 @@
-import { Field, Form, FormikProps } from "formik";
-import { ReactNode } from "react";
-import FormikFormStage from "../utils/forms/FormikFormStage";
-import useFormStages from "../utils/forms/useFormStages";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import NextButton from "../components/forms/NextButton";
+import Stage from "../components/forms/stages/Stage";
+import StageContextProvider from "../components/forms/stages/StageContext";
+import { membersOfEnum } from "../utils/typescript";
 
-class Stage2 extends FormikFormStage<{ email: string }> {
-  constructor() {
-    super({ email: "" }, undefined);
-  }
-
-  protected renderFormik({
-    isSubmitting,
-  }: FormikProps<{ email: string }>): JSX.Element {
-    return (
-      <Form>
-        <Field name="email" type="email" />
-        {isSubmitting && "Wait..."}
-        <button type="submit" disabled={isSubmitting}>
-          Submit
-        </button>
-      </Form>
-    );
-  }
-
-  validate(values: { email: string }): { email?: string } {
-    const errors = {} as { email?: string };
-    if (values.email.trim() === "") errors.email = "Name cannot be empty";
-    if (values.email.trim() === "Itay") errors.email = "Name cannot be Itay";
-    return errors;
-  }
-
-  renderCompleted(
-    state: { email: string },
-    onStageClick: () => void
-  ): JSX.Element {
-    return <button onClick={onStageClick}>{state.email}</button>;
-  }
+enum Stages {
+  Email,
+  Password,
 }
 
-class Stage1 extends FormikFormStage<{ name: string }> {
-  constructor() {
-    super({ name: "" }, () => {
-      return new Stage2();
-    });
-  }
-
-  protected renderFormik({
-    isSubmitting,
-  }: FormikProps<{ name: string }>): JSX.Element {
-    return (
-      <Form>
-        <Field name="name" />
-        {isSubmitting && "Wait..."}
-        <button type="submit" disabled={isSubmitting}>
-          Submit
-        </button>
-      </Form>
-    );
-  }
-
-  validate(values: { name: string }): { name?: string } {
-    const errors = {} as { name?: string };
-    if (values.name.trim() === "") errors.name = "Name cannot be empty";
-    if (values.name.trim() === "Itay") errors.name = "Name cannot be Itay";
-    return errors;
-  }
-
-  renderCompleted(
-    state: { name: string },
-    onStageClick: () => void
-  ): JSX.Element {
-    return <button onClick={onStageClick}>{state.name}</button>;
-  }
-}
+const NUMBER_OF_STAGES = membersOfEnum(Stages);
 
 export default function TestPage() {
-  const [currentStage, previousStages] = useFormStages<{
-    name: string;
-    email: string;
-  }>(
-    [new Stage1()],
-    ({ name, email }) =>
-      new Promise((res) => {
-        setTimeout(() => {
-          console.log(name, email);
-          res();
-        }, 2000);
-      })
-  );
   return (
-    <div>
-      {previousStages}
-      {currentStage}
-    </div>
+    <Formik
+      initialValues={{ email: "", password: "" }}
+      validate={(values) => {
+        const errors = {} as { [k in keyof typeof values]: string };
+
+        if (!values.email) {
+          errors.email = "Required";
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+        ) {
+          errors.email = "Invalid email address";
+        }
+
+        return errors;
+      }}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+
+          setSubmitting(false);
+        }, 400);
+      }}
+      isInitialValid={false}
+    >
+      {({ isSubmitting, isValid }) => (
+        <Form>
+          <StageContextProvider
+            initialStage={Stages.Email}
+            limit={NUMBER_OF_STAGES}
+          >
+            <Stage idx={Stages.Email}>
+              <Field type="email" name="email" />
+              <ErrorMessage name="email" component="div" />
+              <NextButton>הבא</NextButton>
+            </Stage>
+            <Stage idx={Stages.Password}>
+              <Field type="password" name="password" />
+              <ErrorMessage name="password" component="div" />
+              <button type="submit" disabled={isSubmitting || !isValid}>
+                הבא
+              </button>
+            </Stage>
+          </StageContextProvider>
+        </Form>
+      )}
+    </Formik>
   );
 }
