@@ -22,7 +22,7 @@ export interface StageContextProviderProps extends Container {
   limit?: number;
 }
 
-export default function StageContextProvider({
+export default function FormStages({
   children,
   initialStage,
   limit,

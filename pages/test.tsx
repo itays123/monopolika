@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import NextButton from "../components/forms/NextButton";
 import Stage from "../components/forms/stages/Stage";
-import StageContextProvider from "../components/forms/stages/StageContext";
+import FormStages from "../components/forms/stages/FormStages";
 import { membersOfEnum } from "../utils/typescript";
 
 enum Stages {
@@ -39,10 +39,7 @@ export default function TestPage() {
     >
       {({ isSubmitting, isValid }) => (
         <Form>
-          <StageContextProvider
-            initialStage={Stages.Email}
-            limit={NUMBER_OF_STAGES}
-          >
+          <FormStages initialStage={Stages.Email} limit={NUMBER_OF_STAGES}>
             <Stage idx={Stages.Email}>
               <Field type="email" name="email" />
               <ErrorMessage name="email" component="div" />
@@ -55,7 +52,7 @@ export default function TestPage() {
                 הבא
               </button>
             </Stage>
-          </StageContextProvider>
+          </FormStages>
         </Form>
       )}
     </Formik>

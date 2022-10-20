@@ -1,6 +1,6 @@
 import { useFormikContext } from "formik";
 import { ClassName, Container } from "../types";
-import { useStages } from "./stages/StageContext";
+import { useStages } from "./stages/FormStages";
 
 export interface NextButtonProps extends Container, ClassName {}
 

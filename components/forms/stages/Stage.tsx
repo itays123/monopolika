@@ -1,6 +1,6 @@
 import { ComponentType, Fragment, useCallback, useMemo } from "react";
 import { Container } from "../../types";
-import { useStages } from "./StageContext";
+import { useStages } from "./FormStages";
 
 export interface StageCompletedDisplayProps {
   navigateToStage: () => void;
