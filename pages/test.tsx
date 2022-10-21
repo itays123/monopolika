@@ -1,7 +1,7 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import NextButton from "../components/forms/NextButton";
 import Stage from "../components/forms/stages/Stage";
-import FormStages from "../components/forms/stages/FormStages";
+import FormStages, { useStages } from "../components/forms/stages/FormStages";
 import { membersOfEnum } from "../utils/typescript";
 
 enum Stages {
@@ -11,7 +11,8 @@ enum Stages {
 
 const NUMBER_OF_STAGES = membersOfEnum(Stages);
 
-export default function TestPage() {
+export const StagedFormikForm = ({ children }: any) => {
+  const { next, isLast } = useStages();
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -29,32 +30,51 @@ export default function TestPage() {
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-
+        if (!isLast) {
+          next();
           setSubmitting(false);
-        }, 400);
+        } else {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+
+            setSubmitting(false);
+          }, 400);
+        }
       }}
       isInitialValid={false}
     >
-      {({ isSubmitting, isValid }) => (
-        <Form>
-          <FormStages initialStage={Stages.Email} limit={NUMBER_OF_STAGES}>
-            <Stage idx={Stages.Email}>
-              <Field type="email" name="email" />
-              <ErrorMessage name="email" component="div" />
-              <NextButton>הבא</NextButton>
+      {children}
+    </Formik>
+  );
+};
+
+export default function TestPage() {
+  return (
+    <FormStages initialStage={Stages.Email} limit={NUMBER_OF_STAGES}>
+      <StagedFormikForm>
+        {({ isSubmitting, isValid }) => (
+          <>
+            <Stage idx={Stages.Email} stageCompletedDisplay={() => <>email</>}>
+              <Form>
+                <Field type="email" name="email" />
+                <ErrorMessage name="email" component="div" />
+                <button type="submit" disabled={isSubmitting || !isValid}>
+                  הבא
+                </button>
+              </Form>
             </Stage>
             <Stage idx={Stages.Password}>
-              <Field type="password" name="password" />
-              <ErrorMessage name="password" component="div" />
-              <button type="submit" disabled={isSubmitting || !isValid}>
-                הבא
-              </button>
+              <Form>
+                <Field type="password" name="password" />
+                <ErrorMessage name="password" component="div" />
+                <button type="submit" disabled={isSubmitting || !isValid}>
+                  הבא
+                </button>
+              </Form>
             </Stage>
-          </FormStages>
-        </Form>
-      )}
-    </Formik>
+          </>
+        )}
+      </StagedFormikForm>
+    </FormStages>
   );
 }
