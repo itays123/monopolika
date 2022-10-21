@@ -17,6 +17,8 @@ export function useStages() {
   return useContext(StageContext);
 }
 
+export const StagesConsumer = StageContext.Consumer;
+
 export interface StageContextProviderProps extends Container {
   initialStage: number;
   limit?: number;
