@@ -1,12 +1,9 @@
 import { Formik, FormikConfig } from "formik";
-import FormStages, {
-  StageContextProviderProps,
-  StagesConsumer,
-} from "./stages/FormStages";
+import Stages, { StagesProps, StagesConsumer } from "./stages/Stages";
 
 export interface StagedFormikProps<Values>
   extends FormikConfig<Values>,
-    Pick<StageContextProviderProps, "initialStage" | "limit"> {}
+    Pick<StagesProps, "initialStage" | "limit"> {}
 
 export default function StagedFormik<Values>({
   initialStage,
@@ -14,7 +11,7 @@ export default function StagedFormik<Values>({
   ...props
 }: StagedFormikProps<Values>) {
   return (
-    <FormStages initialStage={initialStage} limit={limit}>
+    <Stages initialStage={initialStage} limit={limit}>
       <StagesConsumer>
         {({ next, isLast }) => (
           <Formik
@@ -30,6 +27,6 @@ export default function StagedFormik<Values>({
           />
         )}
       </StagesConsumer>
-    </FormStages>
+    </Stages>
   );
 }

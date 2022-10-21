@@ -1,6 +1,5 @@
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import Stage from "../components/forms/stages/Stage";
-import FormStages, { useStages } from "../components/forms/stages/FormStages";
 import { membersOfEnum } from "../utils/typescript";
 import StagedFormik from "../components/forms/StagedFormik";
 

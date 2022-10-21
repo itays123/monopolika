@@ -19,16 +19,12 @@ export function useStages() {
 
 export const StagesConsumer = StageContext.Consumer;
 
-export interface StageContextProviderProps extends Container {
+export interface StagesProps extends Container {
   initialStage: number;
   limit?: number;
 }
 
-export default function FormStages({
-  children,
-  initialStage,
-  limit,
-}: StageContextProviderProps) {
+export default function Stages({ children, initialStage, limit }: StagesProps) {
   const { currentIndex, setCurrentIndex, ...iteration } = useIteration(
     initialStage,
     limit
